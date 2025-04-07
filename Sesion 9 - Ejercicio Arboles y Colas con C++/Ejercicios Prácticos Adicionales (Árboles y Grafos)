@@ -1,0 +1,88 @@
+#include <iostream>
+#include <chrono>
+#include <iomanip>
+#include <ctime>
+
+void encabezadopgm() {
+    // Datos del encabezado
+    std::string nombre = "Edier Yessid Solis Castañeda";
+    std::string campus = "Campus Cali, U. Cooperativa de Colombia";
+    std::string repositorioGit = "https://github.com/haroldroldan";  // Ejemplo de repositorio Git
+
+    // Obtener la fecha y hora actual
+    auto ahora = std::chrono::system_clock::now();
+    std::time_t tiempo = std::chrono::system_clock::to_time_t(ahora);
+    std::tm* tm = std::localtime(&tiempo);
+
+    // Formatear la fecha y hora
+    std::ostringstream fechaHora;
+    fechaHora << std::put_time(tm, "%d/%m/%Y %H:%M:%S");
+
+    // Imprimir encabezado
+    std::cout << "+----------------------------------------+" << std::endl;
+    std::cout << "| 👤 Nombre: " << nombre << std::endl;
+    std::cout << "| 🎓 Campus: " << campus << std::endl;
+    std::cout << "| 📅 Fecha y hora: " << fechaHora.str() << std::endl;
+    std::cout << "| 📂 Repositorio Git: " << repositorioGit << std::endl;
+    std::cout << "+----------------------------------------+" << std::endl;
+    std::cout << std::endl;
+}
+
+int main() {
+    // Llamada al método encabezadopgm
+    encabezadopgm();
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+ 
+struct Producto {
+    int codigo;
+    Producto* izq;
+    Producto* der;
+};
+ 
+Producto* nuevoProducto(int codigo) {
+    Producto* p = new Producto();
+    p->codigo = codigo;
+    p->izq = p->der = nullptr;
+    return p;
+}
+ 
+Producto* insertar(Producto* raiz, int codigo) {
+    if (raiz == nullptr) return nuevoProducto(codigo);
+    if (codigo < raiz->codigo) raiz->izq = insertar(raiz->izq, codigo);
+    else raiz->der = insertar(raiz->der, codigo);
+    return raiz;
+}
+ 
+bool buscar(Producto* raiz, int codigo) {
+    if (raiz == nullptr) return false;
+    if (raiz->codigo == codigo) return true;
+    return (codigo < raiz->codigo) ? buscar(raiz->izq, codigo) : buscar(raiz->der, codigo);
+}
+ 
+int main() {
+    Producto* raiz = nullptr;
+    raiz = insertar(raiz, 102);
+    insertar(raiz, 85);
+    insertar(raiz, 150);
+    insertar(raiz, 60);
+    insertar(raiz, 90);
+ 
+    int codigoBuscado = 90;
+    cout << "¿Existe el producto con código " << codigoBuscado << "? "
+         << (buscar(raiz, codigoBuscado) ? "Sí" : "No") << endl;
+    return 0;
+}
