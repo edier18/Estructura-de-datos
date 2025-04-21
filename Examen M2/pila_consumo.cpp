@@ -9,17 +9,17 @@
 
 using namespace std;
 
-// Estructura para los registros de consumo
+
 struct Registro {
     string hora;
     double consumo;
 };
 
-// Función para imprimir encabezado
+
 void encabezadoPgm() {
     string nombre = "Edier Yessid Solis Castañeda";
     string campus = "Campus Cali, U. Cooperativa de Colombia";
-    string repositorioGit = "";
+    string repositorioGit = "https://github.com/edier18/Estructura-de-datos";
 
     auto ahora = chrono::system_clock::now();
     time_t tiempo_actual = chrono::system_clock::to_time_t(ahora);
@@ -36,7 +36,7 @@ void encabezadoPgm() {
     cout << endl;
 }
 
-// Función para leer registros desde archivo y cargarlos a una pila
+
 void leerRegistrosDesdeArchivo(const string& nombreArchivo, stack<Registro>& pila) {
     ifstream archivo(nombreArchivo);
 
@@ -56,7 +56,7 @@ void leerRegistrosDesdeArchivo(const string& nombreArchivo, stack<Registro>& pil
     archivo.close();
 }
 
-// Función para mostrar los registros en orden inverso y lanzar alertas
+
 void mostrarRegistrosConAlertas(stack<Registro>& pila) {
     cout << "📊 Registros (orden inverso):\n\n";
 
@@ -72,9 +72,9 @@ void mostrarRegistrosConAlertas(stack<Registro>& pila) {
     }
 }
 
-// Función principal
+
 int main() {
-    encabezadoPgm();  // Mostrar el encabezado
+    encabezadoPgm();  
 
     string nombreArchivo = "consumo.txt";
     stack<Registro> pilaDeConsumo;
