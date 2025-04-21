@@ -7,7 +7,7 @@ void encabezadopgm() {
     // Datos del encabezado
     std::string nombre = "Edier Yessid Solis Castañeda";
     std::string campus = "Campus Cali, U. Cooperativa de Colombia";
-    std::string repositorioGit = "https://github.com/haroldroldan";  // Ejemplo de repositorio Git
+    std::string repositorioGit = "https://github.com/edier18/Estructura-de-datos/tree/main/Sesion%209%20-%20Ejercicio%20Arboles%20y%20Colas%20con%20C%2B%2B";  // Ejemplo de repositorio Git
 
     // Obtener la fecha y hora actual
     auto ahora = std::chrono::system_clock::now();
